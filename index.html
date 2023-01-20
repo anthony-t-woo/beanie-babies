@@ -11,6 +11,10 @@
         <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
 
         <!-- js -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
         <script type="module" src="app.js"></script>
 
         <!-- fonts -->
@@ -32,6 +36,7 @@
         <main>
             <section class="form-section">
                 <form id="user-form">
+                    <p>Filter Beanie Babies by Astrological Sign</p>
                     <select name="sign-selection" id="sign-options"></select>
                     <button>🔍</button>
                 </form>
