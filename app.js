@@ -22,6 +22,15 @@ window.addEventListener('load', async () => {
     displaySignOptions();
 });
 
+// On Form Submit
+searchFormEl.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(searchFormEl);
+    const queriedBabies = await getBabies(formData.get('sign-selection'));
+    babiesData = queriedBabies;
+    displayBabies();
+});
+
 /* Display Functions */
 function displayBabies() {
     babiesListEl.textContent = '';

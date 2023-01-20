@@ -4,7 +4,16 @@ const SUPABASE_KEY =
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export async function getBabies() {
+export async function getBabies(sign) {
+    if (sign) {
+        let { data, error } = await client
+            .from('beanie_babies')
+            .select('*')
+            .eq('astroSign', sign)
+            .limit(100);
+
+        return data;
+    }
     let { data, error } = await client.from('beanie_babies').select('*').limit(100);
 
     return data;
