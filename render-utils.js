@@ -3,9 +3,10 @@ export function renderBaby(baby) {
     const li = document.createElement('li');
     const img = document.createElement('img');
     const h2 = document.createElement('h2');
-
+    const p = document.createElement('p');
     const p1 = document.createElement('p');
     const p2 = document.createElement('p');
+    const release = document.createElement('p');
     const pContainer = document.createElement('div');
     const content = document.createElement('section');
     // add class to parent element for CSS
@@ -15,11 +16,13 @@ export function renderBaby(baby) {
     // assign attributes to elements
     img.src = baby.image;
     h2.textContent = baby.title;
+    p.textContent = `Animal: ${baby.animal}`;
     p1.textContent = `Sign: ${baby.astroSign}`;
-    p2.textContent = `Release Date: ${baby.birthday}`;
+    p2.textContent = `Birthday: ${baby.birthday}`;
+    release.textContent = `Release Date: ${baby.releaseDate}`;
 
     // append elements
-    pContainer.append(p1, p2);
+    pContainer.append(p, p1, p2, release);
     content.append(img, pContainer);
     li.append(h2, content);
     return li;
