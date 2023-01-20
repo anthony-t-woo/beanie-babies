@@ -32,15 +32,18 @@ header .logo {
 
 main {
     padding: 20px;
-}
-
-.babies-list img {
-    width: 150px;
+    background-color: rgb(243, 185, 13);
 }
 
 .babies-list {
     display: flex;
     flex-wrap: wrap;
+}
+
+.babies-list img {
+    width: 150px;
+    margin: 15px;
+    border: 3px dashed burlywood;
 }
 
 .baby-li {
@@ -49,4 +52,18 @@ main {
     padding: 10px;
     border: 3px solid salmon;
     margin: 5px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#user-form {
+    margin: 20px;
+}
+
+.baby-content {
+    display: flex;
 }
