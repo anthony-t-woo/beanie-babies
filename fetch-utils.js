@@ -9,3 +9,9 @@ export async function getBabies() {
 
     return data;
 }
+
+export async function getSigns() {
+    let { data, error } = await client.from('beanie_baby_astro_signs').select('*');
+
+    return data;
+}

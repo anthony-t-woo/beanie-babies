@@ -33,3 +33,19 @@ header .logo {
 main {
     padding: 20px;
 }
+
+.babies-list img {
+    width: 150px;
+}
+
+.babies-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.baby-li {
+    width: 400px;
+    background-color: blanchedalmond;
+    padding: 10px;
+    border: 3px solid salmon;
+}
