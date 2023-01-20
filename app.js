@@ -13,25 +13,30 @@ let signsData = [];
 // On Page Load
 window.addEventListener('load', async () => {
     // load and display all beanie babies
-    const queriedBabies = await getBabies();
-    babiesData = queriedBabies;
-    displayBabies();
+    findBabies();
     // load and display astrological sign options
     const queriedSigns = await getSigns();
     signsData = queriedSigns;
     displaySignOptions();
 });
 
-// On Form Submit
-searchFormEl.addEventListener('submit', async (e) => {
+// On Form Submit - feeds user selection as an argument to call findBabies function
+searchFormEl.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(searchFormEl);
-    const queriedBabies = await getBabies(formData.get('sign-selection'));
-    babiesData = queriedBabies;
-    displayBabies();
+    findBabies(formData.get('sign-selection'));
 });
 
+// find babies function - calls getBabies function to request dataset based on argument
+async function findBabies(sign) {
+    const queriedBabies = await getBabies(sign);
+    // assigns queried data to state so that they can be accessed by displayBabies()
+    babiesData = queriedBabies;
+    displayBabies();
+}
+
 /* Display Functions */
+// clears dom and then loops through babiesData in state to render an HTML element and appends to babiesListEl
 function displayBabies() {
     babiesListEl.textContent = '';
     for (let baby of babiesData) {
@@ -39,7 +44,7 @@ function displayBabies() {
         babiesListEl.append(babyEl);
     }
 }
-
+// loops through signsData in state to render an HTML element and appends to signSelectEl
 function displaySignOptions() {
     for (let sign of signsData) {
         const signEl = renderSignOption(sign);

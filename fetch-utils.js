@@ -5,6 +5,7 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function getBabies(sign) {
+    // requests data set based on the condition of the argument
     if (sign) {
         let { data, error } = await client
             .from('beanie_babies')
@@ -14,12 +15,14 @@ export async function getBabies(sign) {
 
         return data;
     }
+    // returns data without an argument
     let { data, error } = await client.from('beanie_babies').select('*').limit(100);
 
     return data;
 }
 
 export async function getSigns() {
+    // returns data without an argument
     let { data, error } = await client.from('beanie_baby_astro_signs').select('*');
 
     return data;
