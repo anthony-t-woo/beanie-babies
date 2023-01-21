@@ -5,6 +5,7 @@ import { renderBaby, renderSignOption } from './render-utils.js';
 const babiesListEl = document.querySelector('.babies-list');
 const searchFormEl = document.querySelector('#user-form');
 const signSelectEl = document.querySelector('#sign-options');
+const searchInfoEl = document.querySelector('#search-info');
 
 /* State */
 let babiesData = [];
@@ -33,6 +34,7 @@ async function findBabies(sign) {
     // assigns queried data to state so that they can be accessed by displayBabies()
     babiesData = queriedBabies;
     displayBabies();
+    displayCount();
 }
 
 /* Display Functions */
@@ -44,6 +46,7 @@ function displayBabies() {
         babiesListEl.append(babyEl);
     }
 }
+
 // loops through signsData in state to render an HTML element and appends to signSelectEl
 function displaySignOptions() {
     for (let sign of signsData) {
@@ -52,4 +55,11 @@ function displaySignOptions() {
     }
 }
 
+function displayCount() {
+    searchInfoEl.textContent = '';
+    const resultsCountEl = document.createElement('p');
+    resultsCountEl.classList.add('results-count');
+    resultsCountEl.textContent = `Total Results: ${babiesData.length}`;
+    searchInfoEl.append(resultsCountEl);
+}
 // (don't forget to call any display functions you want to run on page load!)
